@@ -23,41 +23,71 @@ async function fetchAPI(endpoint, method = "GET", data = null) {
 function displayResults(results) {
   const resultsSection = document.getElementById("results");
   resultsSection.innerHTML = `<pre>${JSON.stringify(results, null, 2)}</pre>`;
+  resultsSection.classList.add("fade-in");
+  setTimeout(() => resultsSection.classList.remove("fade-in"), 500);
+}
+
+function displayBlocks(blocks) {
+  const blocksList = document.getElementById("blocks-list");
+  blocksList.innerHTML = "";
+  blocks.forEach((block, index) => {
+    const li = document.createElement("li");
+    li.className = "block";
+    li.textContent = `Block ${index}: ${block.hash.substring(0, 10)}...`;
+    li.style.opacity = "0";
+    li.style.transform = "translateY(20px)";
+    blocksList.appendChild(li);
+    setTimeout(() => {
+      li.style.opacity = "1";
+      li.style.transform = "translateY(0)";
+    }, index * 100);
+  });
 }
 
 async function getBlocks() {
   try {
     const blocks = await fetchAPI("blocks");
-    displayResults(blocks);
+    displayBlocks(blocks);
+    displayResults("Blockchain récupérée avec succès");
+    animateAction("get-blocks");
   } catch (error) {
     console.error("Error fetching blocks:", error);
-    displayResults({ error: "Failed to fetch blocks" });
+    displayResults("Erreur lors de la récupération de la blockchain");
   }
 }
 
 async function mineBlock() {
   try {
     const newBlock = await fetchAPI("mineBlock", "POST");
-    displayResults(newBlock);
+    displayResults("Nouveau bloc miné avec succès");
+    getBlocks();
+    animateAction("mine-block");
   } catch (error) {
     console.error("Error mining block:", error);
-    displayResults({ error: "Failed to mine block" });
+    displayResults("Erreur lors du minage du bloc");
   }
 }
 
 async function sendTransaction() {
   try {
     const transaction = {
-      address:
-        "04bfcab8722991ae774db48f934ca79cfb7dd991229153b9f732ba5334aafcd8e7266e47076996b55a14bf9913ee3145ce0cfc1372ada8ada74bd287450313534b",
+      address: "04bfcab8722991ae774db48f934ca79cfb7dd991229153b9f732ba5334aafcd8e7266e47076996b55a14bf9913ee3145ce0cfc1372ada8ada74bd287450313534b",
       amount: 35,
     };
     const result = await fetchAPI("sendTransaction", "POST", transaction);
     displayResults(result);
+    animateAction("send-transaction");
   } catch (error) {
     console.error("Error sending transaction:", error);
     displayResults({ error: "Failed to send transaction" });
   }
+}
+
+function animateAction(action) {
+  const actionElement = document.createElement("div");
+  actionElement.className = `action-animation ${action}`;
+  document.body.appendChild(actionElement);
+  setTimeout(() => actionElement.remove(), 1000);
 }
 
 document.addEventListener("DOMContentLoaded", () => {

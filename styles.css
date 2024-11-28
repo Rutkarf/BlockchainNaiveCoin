@@ -1,213 +1,134 @@
+/* Base styles */
 body {
-    font-family: 'Courier New', monospace;
-    background-color: #0a0a0a;
-    color: #00ff00;
-    margin: 0;
-    padding: 0;
-    overflow-x: hidden;
-  }
-  
-  #particles-js {
-    position: fixed;
-    width: 100%;
-    height: 100%;
-    z-index: -1;
-  }
-  
-  header {
-    text-align: center;
-    padding: 20px 0;
-  }
-  
-  h1 {
-    font-size: 3em;
-    margin: 0;
-  }
-  
-  main {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 20px;
-  }
-  
-  #blockchain-container, #actions, #results, #transaction-form {
-    background-color: rgba(0, 0, 0, 0.7);
-    border: 1px solid #00ff00;
-    border-radius: 5px;
-    padding: 15px;
-    margin-bottom: 20px;
-    box-shadow: 0 0 10px #00ff00;
-  }
-  
-  .neon {
-    color: #fff;
-    text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #ff00de, 0 0 35px #ff00de, 0 0 40px #ff00de, 0 0 50px #ff00de, 0 0 75px #ff00de;
-  }
-  
-  #blocks-list {
-    list-style-type: none;
-    padding: 0;
-  }
-  
-  .block {
-    background-color: rgba(0, 255, 0, 0.1);
-    margin-bottom: 10px;
-    padding: 10px;
-    border-radius: 3px;
-    transition: all 0.3s ease;
-  }
-  
-  .block:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 0 15px #00ff00;
-  }
-  
-  .cybr-btn {
-    --primary: hsl(var(--primary-hue), 85%, calc(var(--primary-lightness, 50) * 1%));
-    --shadow-primary: hsl(var(--shadow-primary-hue), 90%, 50%);
-    --primary-hue: 0;
-    --primary-lightness: 50;
-    --color: hsl(0, 0%, 100%);
-    --font-size: 18px;
-    --shadow-primary-hue: 180;
-    --label-size: 9px;
-    --shadow-secondary-hue: 60;
-    --shadow-secondary: hsl(var(--shadow-secondary-hue), 90%, 60%);
-    --clip: polygon(0 0, 100% 0, 100% 100%, 95% 100%, 95% 90%, 85% 90%, 85% 100%, 8% 100%, 0 70%);
-    --border: 4px;
-    --shimmy-distance: 5;
-    --clip-one: polygon(0 2%, 100% 2%, 100% 95%, 95% 95%, 95% 90%, 85% 90%, 85% 95%, 8% 95%, 0 70%);
-    --clip-two: polygon(0 78%, 100% 78%, 100% 100%, 95% 100%, 95% 90%, 85% 90%, 85% 100%, 8% 100%, 0 78%);
-    --clip-three: polygon(0 44%, 100% 44%, 100% 54%, 95% 54%, 95% 54%, 85% 54%, 85% 54%, 8% 54%, 0 54%);
-    --clip-four: polygon(0 0, 100% 0, 100% 0, 95% 0, 95% 0, 85% 0, 85% 0, 8% 0, 0 0);
-    --clip-five: polygon(0 0, 100% 0, 100% 0, 95% 0, 95% 0, 85% 0, 85% 0, 8% 0, 0 0);
-    --clip-six: polygon(0 40%, 100% 40%, 100% 85%, 95% 85%, 95% 85%, 85% 85%, 85% 85%, 8% 85%, 0 70%);
-    --clip-seven: polygon(0 63%, 100% 63%, 100% 80%, 95% 80%, 95% 80%, 85% 80%, 85% 80%, 8% 80%, 0 70%);
-    font-family: 'Cyber', sans-serif;
-    color: var(--color);
-    cursor: pointer;
-    background: transparent;
-    text-transform: uppercase;
-    font-size: var(--font-size);
-    outline: transparent;
-    letter-spacing: 2px;
-    position: relative;
-    font-weight: 700;
-    border: 0;
-    min-width: 200px;
-    height: 50px;
-    line-height: 50px;
-    transition: background 0.2s;
-    margin: 10px;
-  }
-  
-  .cybr-btn:hover {
-    --primary: hsl(var(--primary-hue), 85%, calc(var(--primary-lightness, 50) * 0.8%));
-  }
-  
-  .cybr-btn:active {
-    --primary: hsl(var(--primary-hue), 85%, calc(var(--primary-lightness, 50) * 0.6%));
-  }
-  
-  .glitch-text {
-    position: relative;
-    animation: glitch 1s linear infinite;
-    color: #00ff00;
-  }
-  
-  .glitch-text::before,
-  .glitch-text::after {
-    content: attr(data-text);
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-  }
-  
-  .glitch-text::before {
-    left: 2px;
-    text-shadow: -2px 0 #ff00c1;
-    clip: rect(44px, 450px, 56px, 0);
-    animation: glitch-anim 5s infinite linear alternate-reverse;
-  }
-  
-  .glitch-text::after {
-    left: -2px;
-    text-shadow: -2px 0 #00fff9, 2px 2px #ff00c1;
-    animation: glitch-anim2 1s infinite linear alternate-reverse;
-  }
-  
-  @keyframes glitch-anim {
-    0% {
-      clip: rect(31px, 9999px, 94px, 0);
-      transform: skew(0.85deg);
-    }
-    100% {
-      clip: rect(70px, 9999px, 78px, 0);
-      transform: skew(-0.85deg);
-    }
-  }
-  
-  @keyframes glitch-anim2 {
-    0% {
-      clip: rect(65px, 9999px, 119px, 0);
-      transform: skew(0.85deg);
-    }
-    100% {
-      clip: rect(47px, 9999px, 43px, 0);
-      transform: skew(-0.85deg);
-    }
-  }
-  
-  input[type="text"], input[type="number"] {
-    background-color: rgba(0, 255, 0, 0.1);
-    border: 1px solid #00ff00;
-    color: #00ff00;
-    padding: 10px;
-    margin: 5px 0;
-    width: 100%;
-  }
-  
-  #result-content {
-    background-color: rgba(0, 255, 0, 0.1);
-    padding: 10px;
-    border-radius: 3px;
-    white-space: pre-wrap;
-    font-family: 'Courier New', monospace;
-    color: #00ff00;
-  }
-  
-  .hidden {
-    display: none;
-  }
-  
-  @keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-  }
-  
-  .fade-in {
-    animation: fadeIn 0.5s;
-  }
-  
-  .action-animation {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    animation: pulse 1s ease-out;
-  }
-  
-  @keyframes pulse {
-    0% { transform: translate(-50%, -50%) scale(0); opacity: 1; }
-    100% { transform: translate(-50%, -50%) scale(1.5); opacity: 0; }
-  }
-  
-  .get-blocks { background-color: #3498db; }
-  .mine-block { background-color: #2ecc71; }
-  .send-transaction { background-color: #e74c3c; }
-  
+  font-family: "Orbitron", "Courier New", monospace;
+  background: linear-gradient(45deg, #0a0a0a, #1a1a2e);
+  color: #00ff00;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+#particles-js {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+
+/* Header styles */
+header {
+  text-align: center;
+  padding: 10px 0;
+  background: rgba(0, 0, 0, 0.5);
+  border-bottom: 2px solid #00ff00;
+}
+
+h1 {
+  font-size: 2em;
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+}
+
+/* Main content styles */
+main {
+  flex: 1;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 10px;
+  padding: 10px;
+  overflow: hidden;
+}
+
+#blockchain-container,
+#actions,
+#results,
+#transaction-form,
+#block-explorer,
+#network-stats,
+#wallet-connect,
+#smart-contract-interaction,
+#staking-options,
+#governance-voting {
+  background-color: rgba(0, 0, 0, 0.7);
+  border: 1px solid #00ff00;
+  border-radius: 5px;
+  padding: 10px;
+  box-shadow: 0 0 10px #00ff00, inset 0 0 5px #00ff00;
+  transition: all 0.3s ease;
+  overflow-y: auto;
+  max-height: 100%;
+}
+
+.neon {
+  color: #fff;
+  text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #ff00de,
+    0 0 35px #ff00de, 0 0 40px #ff00de, 0 0 50px #ff00de, 0 0 75px #ff00de;
+}
+
+/* Button styles */
+.cybr-btn {
+  --font-size: 12px;
+  min-width: 120px;
+  height: 30px;
+  line-height: 30px;
+  margin: 5px;
+}
+
+/* Input styles */
+input[type="text"],
+input[type="number"],
+textarea,
+select {
+  padding: 5px;
+  margin: 5px 0;
+  font-size: 12px;
+}
+
+/* Footer styles */
+footer {
+  text-align: center;
+  padding: 5px;
+  background: rgba(0, 0, 0, 0.5);
+  border-top: 1px solid #00ff00;
+}
+
+/* Grid layout adjustments */
+#actions {
+  grid-column: span 4;
+}
+
+#blockchain-container,
+#results {
+  grid-column: span 2;
+}
+
+#transaction-form,
+#block-explorer,
+#network-stats,
+#wallet-connect,
+#smart-contract-interaction,
+#staking-options,
+#governance-voting {
+  grid-column: span 1;
+}
+
+/* Scrollbar styles */
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0a0a0a;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #00ff00;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #00cc00;
+}
